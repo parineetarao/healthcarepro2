@@ -1,0 +1,310 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to light blue/teal gradient with coral and soft blue accents */
+  --background: linear-gradient(135deg, #e0f2fe 0%, #e6fffa 100%); /* Light blue to pale teal gradient */
+  --foreground: #475569; /* Slate gray body text */
+  --card: #ffffff; /* White card background */
+  --card-foreground: #475569; /* Card text */
+  --popover: rgba(255, 255, 255, 0.95); /* Light popover background */
+  --popover-foreground: #475569; /* Popover text */
+  --primary: #f87171; /* Coral for primary buttons and highlights */
+  --primary-foreground: #ffffff; /* White text on coral */
+  --secondary: #3b82f6; /* Soft blue for secondary elements */
+  --secondary-foreground: #ffffff; /* White text on soft blue */
+  --muted: #f1f5f9; /* Light muted background */
+  --muted-foreground: #64748b; /* Muted text */
+  --accent: #f87171; /* Coral accent color */
+  --accent-foreground: #ffffff; /* White text on coral */
+  --hover: #ef4444; /* Darker coral for hover */
+  --destructive: #dc2626; /* Destructive actions */
+  --destructive-foreground: #ffffff; /* Text on destructive actions */
+  --border: #e2e8f0; /* Light border color */
+  --input: #ffffff; /* Input backgrounds */
+  --ring: rgba(248, 113, 113, 0.3); /* Coral focus ring */
+  --chart-1: #f87171; /* Chart color 1 (coral) */
+  --chart-2: #3b82f6; /* Chart color 2 (soft blue) */
+  --chart-3: #06b6d4; /* Chart color 3 (cyan) */
+  --chart-4: #8b5cf6; /* Chart color 4 (purple) */
+  --chart-5: #10b981; /* Chart color 5 (emerald) */
+  --radius: 0.75rem; /* Rounded corners */
+  --heading: #0f172a; /* Dark navy for headings */
+
+  /* Added new color variables for the theme */
+  --coral: #f87171;
+  --soft-blue: #3b82f6;
+  --dark-navy: #0f172a;
+  --slate-gray: #475569;
+  --light-blue: #e0f2fe;
+  --pale-teal: #e6fffa;
+}
+
+.dark {
+  /* Updated dark mode to maintain blue + purple theme */
+  --background: #0f172a; /* Very dark background */
+  --foreground: #f1f5f9; /* Light text */
+  --card: #1e293b; /* Dark card background */
+  --card-foreground: #f1f5f9; /* Light card text */
+  --popover: rgba(30, 41, 59, 0.95); /* Dark popover */
+  --popover-foreground: #f1f5f9; /* Light popover text */
+  --primary: #60a5fa; /* Brighter blue for dark mode */
+  --primary-foreground: #0f172a; /* Dark text on primary */
+  --secondary: #a78bfa; /* Brighter purple for dark mode */
+  --secondary-foreground: #0f172a; /* Dark text on secondary */
+  --muted: #334155; /* Dark muted */
+  --muted-foreground: #94a3b8; /* Medium light muted text */
+  --accent: #60a5fa; /* Brighter blue for dark mode */
+  --accent-foreground: #0f172a; /* Dark accent text */
+  --hover: #93c5fd; /* Brighter hover blue for dark mode */
+  --destructive: #ef4444; /* Brighter red for dark mode */
+  --destructive-foreground: #f1f5f9; /* Light destructive text */
+  --border: #475569; /* Dark border */
+  --input: #334155; /* Dark input */
+  --ring: rgba(96, 165, 250, 0.4); /* Blue focus ring */
+  --chart-1: #60a5fa; /* Bright blue for dark charts */
+  --chart-2: #a78bfa; /* Bright purple */
+  --chart-3: #22d3ee; /* Bright cyan */
+  --chart-4: #c084fc; /* Light purple */
+  --chart-5: #38bdf8; /* Medium sky blue */
+  --sidebar: #1e293b; /* Dark sidebar */
+  --sidebar-foreground: #f1f5f9; /* Light sidebar text */
+  --sidebar-primary: #60a5fa; /* Blue sidebar primary */
+  --sidebar-primary-foreground: #0f172a; /* Dark sidebar primary text */
+  --sidebar-accent: #a78bfa; /* Purple sidebar accent */
+  --sidebar-accent-foreground: #0f172a; /* Dark sidebar accent text */
+  --sidebar-border: #475569; /* Dark sidebar border */
+  --sidebar-ring: rgba(96, 165, 250, 0.4); /* Blue sidebar focus ring */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Updated healthcare-themed custom CSS classes */
+@layer utilities {
+  .healthcare-gradient {
+    background: linear-gradient(135deg, #e0f2fe 0%, #e6fffa 100%);
+  }
+
+  .healthcare-gradient-subtle {
+    background: linear-gradient(135deg, rgba(224, 242, 254, 0.5) 0%, rgba(230, 255, 250, 0.5) 100%);
+  }
+
+  .hero-gradient {
+    background: linear-gradient(135deg, #e0f2fe 0%, #e6fffa 100%);
+  }
+
+  .button-gradient-coral {
+    background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+  }
+
+  .button-gradient-blue {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  }
+
+  /* Added animated floating elements */
+  .floating-elements {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .floating-elements::before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(248, 113, 113, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: floatSlow 8s ease-in-out infinite;
+  }
+
+  .floating-elements::after {
+    content: "";
+    position: absolute;
+    top: 60%;
+    right: 15%;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: floatSlow 10s ease-in-out infinite reverse;
+  }
+
+  /* Updated subtle background patterns */
+  .subtle-pattern {
+    background-image: radial-gradient(circle at 20% 30%, rgba(248, 113, 113, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f87171' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .wave-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q25 0 50 10 T100 10 V20 H0 Z' fill='%233b82f6' fill-opacity='0.04'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: bottom;
+  }
+
+  /* Updated shadows for coral/blue theme */
+  .healthcare-shadow {
+    box-shadow: 0 4px 6px -1px rgba(248, 113, 113, 0.08), 0 2px 4px -1px rgba(59, 130, 246, 0.04);
+  }
+
+  .healthcare-shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(248, 113, 113, 0.08), 0 4px 6px -2px rgba(59, 130, 246, 0.04);
+  }
+
+  .floating-card {
+    box-shadow: 0 8px 25px rgba(248, 113, 113, 0.06), 0 3px 10px rgba(59, 130, 246, 0.03);
+  }
+
+  /* Enhanced button hover animations */
+  .float-animation {
+    animation: gentleFloat 4s ease-in-out infinite;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .float-animation:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(248, 113, 113, 0.15), 0 5px 15px rgba(59, 130, 246, 0.1);
+  }
+
+  .button-coral:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(248, 113, 113, 0.3);
+  }
+
+  .button-blue:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+  }
+
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.1), 0 3px 10px rgba(124, 58, 237, 0.06);
+  }
+
+  .scale-in {
+    animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .stagger-1 {
+    animation-delay: 0.1s;
+  }
+  .stagger-2 {
+    animation-delay: 0.2s;
+  }
+  .stagger-3 {
+    animation-delay: 0.3s;
+  }
+  .stagger-4 {
+    animation-delay: 0.4s;
+  }
+  .stagger-5 {
+    animation-delay: 0.5s;
+  }
+  .stagger-6 {
+    animation-delay: 0.6s;
+  }
+}
+
+/* Updated keyframe animations for smoother effects */
+@keyframes gentleFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  66% {
+    transform: translateY(5px) translateX(-5px);
+  }
+}
